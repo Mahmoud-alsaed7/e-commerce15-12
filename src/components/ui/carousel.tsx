@@ -1,4 +1,6 @@
 "use client"
+import type { EmblaOptionsType, EmblaPluginType } from "embla-carousel"
+
 
 import * as React from "react"
 import useEmblaCarousel, {
@@ -14,10 +16,18 @@ type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
 type CarouselOptions = UseCarouselParameters[0]
 type CarouselPlugin = UseCarouselParameters[1]
 
-type CarouselProps = {
-  opts?: CarouselOptions
+// type CarouselProps = {
+//   opts?: CarouselOptions
+//   orientation?: "horizontal" | "vertical"
+//   setApi?: (api: CarouselApi) => void
+// }
+export type CarouselProps = React.HTMLAttributes<HTMLDivElement> & {
+  opts?: EmblaOptionsType
   orientation?: "horizontal" | "vertical"
-  setApi?: (api: CarouselApi) => void
+  // plugins?: any[]   // 👈 إضافة هذا السطر
+  plugins?: EmblaPluginType[]
+
+
 }
 
 type CarouselContextProps = {
