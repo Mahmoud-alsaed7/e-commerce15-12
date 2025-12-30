@@ -33,7 +33,7 @@ export default function Navbar() {
    let{isLoading,wishlistdata}=  useContext(wishlistcontext)
 
   return <>
-  <nav className='bg-gray-100 text-2xl py-3 font-semibold'>
+  <nav className='bg-gray-100 text-2xl py-3 font-semibold fixed top-0 start-0 end-0 shadow'>
   <div className="max-w-7xl mx-auto px-4">
     <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-4'>
 
