@@ -21,13 +21,17 @@ type CarouselPlugin = UseCarouselParameters[1]
 //   orientation?: "horizontal" | "vertical"
 //   setApi?: (api: CarouselApi) => void
 // }
+// export type CarouselProps = React.HTMLAttributes<HTMLDivElement> & {
+//   opts?: EmblaOptionsType
+//   orientation?: "horizontal" | "vertical"
+//   plugins?: EmblaPluginType[]
+// }
+
 export type CarouselProps = React.HTMLAttributes<HTMLDivElement> & {
   opts?: EmblaOptionsType
   orientation?: "horizontal" | "vertical"
-  // plugins?: any[]   // 👈 إضافة هذا السطر
   plugins?: EmblaPluginType[]
-
-
+  setApi?: (api: CarouselApi) => void
 }
 
 type CarouselContextProps = {
