@@ -10,7 +10,7 @@ import Autoplay from "embla-carousel-autoplay";
 import Image from 'next/image';
 export default function Prodectslice({image,title}:{image:string[], title:string}) {
   return (
-    <>
+  <>
       <Carousel
   opts={{
     loop: true,
@@ -21,7 +21,6 @@ export default function Prodectslice({image,title}:{image:string[], title:string
     })
   ]}
 >
-
   <CarouselContent>
   {  image.map((img,index)=><CarouselItem key={index}><Image  width={300} height={300} src={img} alt={title}></Image></CarouselItem>)}
   </CarouselContent>
