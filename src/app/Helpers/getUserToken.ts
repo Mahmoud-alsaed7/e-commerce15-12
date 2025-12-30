@@ -1,17 +1,17 @@
-//  "use server" 
-// import { decode } from "next-auth/jwt"
-// import { cookies } from "next/headers"
+ "use server" 
+import { decode } from "next-auth/jwt"
+import { cookies } from "next/headers"
 
-//  export async function getusertoken(){
-//   const x = (await cookies()).get("next-auth.session-token")?.value
-//        const accesstoken= await decode({token:x , secret:process.env.NEXTAUTH_SECRET!})
-//          return accesstoken?.token
-//      }
-"use server"
- import { decode } from "next-auth/jwt";
-import { cookies } from "next/headers";
-export async function getUserToken(){
-      const x=(await cookies()).get("next-auth.session-token")?.value||(await cookies()).get("__Secure-next-auth.session-token")?.value
-        const accessToken=await decode({token:x, secret: process.env.NEXTAUTH_SECRET!,})
-        return accessToken?.token
-}
+ export async function getusertoken(){
+  const x = (await cookies()).get("next-auth.session-token")?.value||(await cookies()).get("__Secure-next-auth.session-token")?.value
+       const accesstoken= await decode({token:x , secret:process.env.NEXTAUTH_SECRET!})
+         return accesstoken?.token
+     }
+// "use server"
+//  import { decode } from "next-auth/jwt";
+// import { cookies } from "next/headers";
+// export async function getUserToken(){
+//       const x=(await cookies()).get("next-auth.session-token")?.value||(await cookies()).get("__Secure-next-auth.session-token")?.value
+//         const accessToken=await decode({token:x, secret: process.env.NEXTAUTH_SECRET!,})
+//         return accessToken?.token
+// }
