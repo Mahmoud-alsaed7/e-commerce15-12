@@ -19,7 +19,7 @@ import { Card } from "@/components/ui/card"
 import clsx from "clsx"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { Loader } from "lucide-react"
+import { Eye, EyeOff, Loader } from "lucide-react"
 import { FailloginResponse, SuccessloginResponse } from "@/interfaces"
 import Link from "next/link"
 
@@ -36,6 +36,8 @@ const formSchema = z.object({
     path: ["rePassword"],
   });
 export default function register() {
+  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword1, setShowPassword1] = useState(false)
      const[IsLoading,setIsLoading]   =  useState(false)
      const[Iserror,setIserror]   =  useState(null)
  const form = useForm<z.infer<typeof formSchema>>({
@@ -117,19 +119,29 @@ export default function register() {
         />
         <FormField
           control={form.control}
-          name="password"
+          name= 'password'
           render={({ field,fieldState }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
+                <div className="relative">
                 <Input placeholder="Mahmoud@123" {...field} 
+                type={showPassword ? "text" : "password"}
                 className={clsx(
-                            fieldState.error && "border-red-500 focus-visible:ring-red-500",
-                            !fieldState.error &&
-                              fieldState.isTouched &&
-                              "border-green-500 focus-visible:ring-green-500"
-                          )}
+                  fieldState.error && "border-red-500 focus-visible:ring-red-500",
+                  !fieldState.error &&
+                  fieldState.isTouched &&
+                  "border-green-500 focus-visible:ring-green-500"
+                )}
                 />
+                 <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-1/2 -translate-y-1/2"
+            >
+               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+            </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -140,16 +152,26 @@ export default function register() {
           name="rePassword"
           render={({ field,fieldState }) => (
             <FormItem>
-              <FormLabel>Confirmpassword</FormLabel>
+              <FormLabel>Confirm password</FormLabel>
               <FormControl>
-                <Input placeholder="Mahmoud@123" {...field} 
+               <div className="relative">
+                <Input  {...field} 
+                type={showPassword1 ? "text" : "password"}
                 className={clsx(
-                            fieldState.error && "border-red-500 focus-visible:ring-red-500",
-                            !fieldState.error &&
-                              fieldState.isTouched &&
-                              "border-green-500 focus-visible:ring-green-500"
-                          )}
+                  fieldState.error && "border-red-500 focus-visible:ring-red-500",
+                  !fieldState.error &&
+                  fieldState.isTouched &&
+                  "border-green-500 focus-visible:ring-green-500"
+                )}
                 />
+                   <button
+            type="button"
+            onClick={() => setShowPassword1(!showPassword1)}
+            className="absolute right-3 top-1/2 -translate-y-1/2"
+            >
+              {showPassword1 ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -1,16 +1,18 @@
 'use client'
 import { getusertoken } from '@/app/Helpers/getUserToken'
 import { Button } from '../ui/button'
-import { Trash2 } from 'lucide-react'
+import { Loader, Trash2 } from 'lucide-react'
 import { address} from '@/interfaces'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AddressContext } from '../addresscontext/AddressContext'
 
 
 export default function Removeaddress({addressid}:{addressid:string|null}) {
         const{setaddressdata,getaddress} =useContext(AddressContext)
+        const[IsLoading,setIsLoading]=useState(false)
     async function removeaddress(){
       const token = await  getusertoken()
+      setIsLoading(true)
     const response = await fetch("https://ecommerce.routemisr.com/api/v1/addresses/"+addressid,{
             method:'delete',
             headers:{
@@ -21,8 +23,8 @@ export default function Removeaddress({addressid}:{addressid:string|null}) {
           console.log(data);
           if(data.status=="success"){
             setaddressdata(data)
-            //  getaddress()
         }
+        setIsLoading(false)
     }         
     return (
     <>
@@ -32,7 +34,7 @@ export default function Removeaddress({addressid}:{addressid:string|null}) {
               className="text-red-500 hover:text-red-600 cursor-pointer"
               onClick={removeaddress}
             >
-              <Trash2 size={18} />
+           {IsLoading? <Loader className='animate-spin'/>:<Trash2 size={18} />}   
         </Button> 
     </>
   )

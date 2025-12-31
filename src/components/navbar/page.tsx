@@ -17,13 +17,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { HeartIcon, Loader, ShoppingCartIcon, UserIcon } from "lucide-react"
-import { signOut, useSession } from "next-auth/react"
 import { CartContext } from "../CartContext/CartContaxt"
 import { wishlistcontext } from "../WishListContext/wishlistcontext"
-
+import { signOut, useSession } from "next-auth/react"
 export default function Navbar() {
-    
-   const{cartdata,IsLoading}=useContext(CartContext)
+    const{cartdata,IsLoading}=useContext(CartContext)
    let{isLoading,wishlistdata}=  useContext(wishlistcontext)
   const session = useSession()
 
@@ -33,16 +31,15 @@ export default function Navbar() {
     <nav className="bg-gray-100 py-3 text-lg font-semibold fixed top-0 inset-x-0 shadow z-50">
       <div className="container mx-auto px-4">
 
-        {/* Top Bar */}
+
         <div className="flex items-center justify-between">
 
-          {/* Logo */}
+
           <h1 className="flex items-center gap-2">
             <span className="px-3 py-0.5 rounded-lg text-white bg-black">S</span>
             <Link href="/">ShopMart</Link>
           </h1>
 
-          {/* Desktop Menu */}
           <div className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList>
@@ -64,45 +61,48 @@ export default function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-
-          {/* Right Section */}
           <div className="flex items-center gap-3">
-
-            {/* Greeting */}
             {session.status === "authenticated" && (
-              <h2 className="hidden md:block text-sm">
-                hi {session.data.user?.name}
+              <h2 className="hidden text-2xl md:block ">
+                Hi {session.data.user?.name}
               </h2>
             )}
 
-            {/* User Dropdown */}
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger>
-                <UserIcon />
+                <UserIcon/>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                {session.status === "authenticated" ? (
-                  <DropdownMenuItem
-                    onClick={() => signOut({ callbackUrl: "/" })}
-                  >
-                    Logout
-                  </DropdownMenuItem>
-                ) : (
-                  <>
-                    <Link href="/login">
-                      <DropdownMenuItem>Login</DropdownMenuItem>
-                    </Link>
-                    <Link href="/register">
-                      <DropdownMenuItem>Register</DropdownMenuItem>
-                    </Link>
-                  </>
-                )}
+              {session.status === "authenticated" ? (
+  <>
+    <Link href="/profile">
+      <DropdownMenuItem>
+        Profile
+      </DropdownMenuItem>
+    </Link>
+
+    <DropdownMenuItem
+      onClick={() => signOut({ callbackUrl: "/" })}
+    >
+      Logout
+    </DropdownMenuItem>
+  </>
+) : (
+  <>
+    <Link href="/login">
+      <DropdownMenuItem>Login</DropdownMenuItem>
+    </Link>
+
+    <Link href="/register">
+      <DropdownMenuItem>Register</DropdownMenuItem>
+    </Link>
+  </>
+)}
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Cart + Wishlist Desktop */}
             {session.status === "authenticated" && (
               <div className="hidden md:flex items-center gap-4">
                 <IconBadge
@@ -113,14 +113,13 @@ export default function Navbar() {
                 />
                 <IconBadge
                   href="/wishlist"
-                  icon={ <HeartIcon/>}
+                  icon={<HeartIcon />}
                   value={wishlistdata?.count}
                   loading={isLoading}
                 />
               </div>
             )}
 
-            {/* Mobile Menu Button */}
             <button
               className="md:hidden text-2xl"
               onClick={() => setOpenMenu(!openMenu)}
@@ -130,7 +129,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {openMenu && (
           <div className="md:hidden mt-4 flex flex-col gap-3 text-base">
             <Link href="/products" onClick={() => setOpenMenu(false)}>
@@ -153,7 +151,7 @@ export default function Navbar() {
                 />
                 <IconBadge
                   href="/wishlist"
-                  icon={ <HeartIcon/>}
+                  icon={<HeartIcon />}
                   value={wishlistdata?.count}
                   loading={isLoading}
                 />
@@ -165,8 +163,6 @@ export default function Navbar() {
     </nav>
   )
 }
-
-/* Reusable Icon + Badge */
 function IconBadge({
   href,
   icon,

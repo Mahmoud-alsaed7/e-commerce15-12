@@ -71,12 +71,11 @@ export default function cart(){
               method:'DELETE',       
               headers:{
                 token:token!
-                // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MmE0ZDBmODRkOTUwYzkwMjM3NjM0YyIsIm5hbWUiOiJBaG1lZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0MzgwMTA2LCJleHAiOjE3NzIxNTYxMDZ9.JpFVqNg2TAhTUq5QLozfWTjsXopT0UOsURIMhgO0MeY"
               }
             })
             const  data = await response.json()
             if(data.message=="success"){
-              setcartdata(null)
+              getcart()
             }           
             setisclearing(false)
          }

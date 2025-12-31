@@ -17,7 +17,8 @@ export default  function profile() {
     return <Loading />
      }
   const addresses = addressdata.data ?? []
-   return (
+  
+  return (
     <>
     {addresses?.length === 0 ?(
    <div className="flex flex-col justify-center items-center gap-3 min-h-[75vh] ">
@@ -51,7 +52,6 @@ export default  function profile() {
               <span className="text-muted-foreground">Details</span>
               <span className="font-medium">{address.details}</span>
             </div>
-
             <div className="flex justify-between">
               <span className="text-muted-foreground">Phone</span>
               <span className="font-medium">{address.phone}</span>
