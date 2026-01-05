@@ -24,7 +24,7 @@ export default async  function Getuserid({userId}:{userId:any}) {
   return (
     <>
       <div className="container flex flex-col py-6 px-10 gap-3">
-      <h1 className="font-bold text-3xl">All Orders</h1>
+      <h1 className="font-bold text-3xl mt-10">All Orders</h1>
         {
        orders.map((order)=> <Card key={order._id}  className="w-full  mx-auto ">
       <CardHeader className="space-y-2">
