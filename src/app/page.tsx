@@ -1,7 +1,7 @@
 import Link from "next/link";
 export default function Home() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white mt-17 py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
           Welcome to ShopMart

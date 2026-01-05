@@ -28,12 +28,12 @@ export default  function profile() {
          </Link>
     </div> )
     :
-   ( <div className="container mx-auto px-10 ">
-      <h1 className='text-3xl font-bold tracking-tight mb-5 mt-10'>Your Profile</h1>
-       <div className="flex flex-col gap-3">
-              <p className=' text-xl  font-bold tracking-tight ms-40 mt-7 '>Your Addresss</p>
+   ( <div className="container mx-auto px-10  ">
+      <h1 className='text-3xl font-bold tracking-tight mb-5 mt-15'>Your Profile</h1>
+       <div className="flex flex-col  gap-3">
+              <p className=' text-xl  font-bold tracking-tight ms-40 mt-7'>Your Addresss</p>
        {addressdata?.data.reverse().map((address)=> 
-         <Card key={address._id} className="w-4xl mx-auto">
+         <Card key={address._id} className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-4xl mx-auto">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Shipping Address</CardTitle>
             <Removeaddress addressid={address._id}/>

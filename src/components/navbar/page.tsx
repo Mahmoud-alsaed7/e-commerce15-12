@@ -68,8 +68,8 @@ export default function Navbar() {
               </h2>
             )}
 
-            <DropdownMenu modal={false}>
-              <DropdownMenuTrigger>
+            <DropdownMenu  modal={false}>
+              <DropdownMenuTrigger className="cursor-pointer">
                 <UserIcon/>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -78,13 +78,14 @@ export default function Navbar() {
               {session.status === "authenticated" ? (
   <>
     <Link href="/profile">
-      <DropdownMenuItem>
+      <DropdownMenuItem className="cursor-pointer">
         Profile
       </DropdownMenuItem>
     </Link>
 
     <DropdownMenuItem
       onClick={() => signOut({ callbackUrl: "/" })}
+      className="cursor-pointer"
     >
       Logout
     </DropdownMenuItem>
