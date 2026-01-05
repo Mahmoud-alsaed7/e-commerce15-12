@@ -9,7 +9,7 @@ export default async function brands() {
           return (
             <>
     <div className="container mx-auto px-6 ">
-      <h1 className="font-bold m-8 text-3xl ">Brands</h1>
+      <h1 className="font-bold m-8 text-3xl  mt-15 ">Brands</h1>
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
       {brands.map((brand)=>
       <Link key={brand._id} href={'/brands/'+brand._id}>

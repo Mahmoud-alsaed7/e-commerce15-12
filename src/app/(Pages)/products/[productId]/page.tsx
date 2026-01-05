@@ -24,7 +24,7 @@ export default async function prodectDetails({params}:{params:Params}) {
          console.log(product);
   return (
     <>
-     <Card className="grid md:grid-cols-2 w-2/4 mx-auto  mt-10 items-center">
+     <Card className="grid md:grid-cols-2 w-2/4 mx-auto  mt-15 items-center">
     <Prodectslice image={product.images} title={product.title}/>
   <div>
     <CardHeader>

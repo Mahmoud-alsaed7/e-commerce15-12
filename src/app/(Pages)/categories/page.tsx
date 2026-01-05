@@ -8,7 +8,7 @@ export default async function categories() {
   return (
     <>
     <div className="container mx-auto px-6 ">
-          <h1 className="font-bold m-8 text-3xl ">Categories</h1>
+          <h1 className="font-bold m-8 text-3xl mt-15 ">Categories</h1>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
          {categorys.map((category)=> 
           <Link key={category._id}  href={'/categories/'+ category._id}>

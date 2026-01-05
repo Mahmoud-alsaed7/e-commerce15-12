@@ -18,7 +18,7 @@ export default async function products() {
    const response = await fetch('https://ecommerce.routemisr.com/api/v1/products')
            const {data:products}:{data:product[]}=await response.json()  
   return <>
-         <div className="container mx-auto px-3 py-6">
+         <div className="container mx-auto px-3 py-15">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 ">
       {
         products.map((product)=> <div  key={product._id} >

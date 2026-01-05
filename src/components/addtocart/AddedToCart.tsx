@@ -19,7 +19,6 @@ export default function AddedToCart({productId}:{productId:string}) {
     setLoading(true)
     if(session.status=="authenticated"){
       const data= await AddedToCartaction(productId)
-        // console.log(data);
         data.status=="success" && toast.success('product add successfully')
         setLoading(false)
         setcartdata(data)

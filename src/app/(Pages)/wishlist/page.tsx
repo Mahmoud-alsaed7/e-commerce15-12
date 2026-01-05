@@ -21,40 +21,18 @@ import Mystaricon from "@/components/mystaricon/mystaricon"
 import AddedToCart from "@/components/addtocart/AddedToCart2"
 import Image from "next/image"
 export default function wishlist() {
-      const[removeingid,setremoveingid]=  useState<null|string>(null)
            
-     let{isLoading,wishlistdata,getwishlist}=  useContext(wishlistcontext)
+     let{isLoading,wishlistdata,getwishlist,removeing,removeingid}=  useContext(wishlistcontext)
      useEffect(() => { 
         getwishlist()
         console.log(wishlistdata);
             }
-        , []) 
-           async function removeing( productid:string ){ 
-          const token= await getusertoken()
-          setremoveingid(productid)      
-        const response= await fetch('https://ecommerce.routemisr.com/api/v1/wishlist/'+productid,{
-              method:'DELETE',
-              headers:{
-                token:token!
-                // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MmE0ZDBmODRkOTUwYzkwMjM3NjM0YyIsIm5hbWUiOiJBaG1lZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0MzgwMTA2LCJleHAiOjE3NzIxNTYxMDZ9.JpFVqNg2TAhTUq5QLozfWTjsXopT0UOsURIMhgO0MeY"
-              }
-            })
-            const  data:wishResponse = await response.json()
-            if(data.status=="success"){
-              toast.success('product deleted successfully')
-              getwishlist()
-            }           
-            setremoveingid(null)
-            console.log(token);
-            
-         }
-           
-          
+        , [])     
   return (
     <>
       {isLoading?<Loading/>:wishlistdata?.count! > 0 ?
  <div className="container mx-auto px-10 py-3">
-           <h1 className='text-3xl font-bold tracking-tight ms-7'>WishList</h1>
+           <h1 className='text-3xl font-bold tracking-tight mt-10 ms-7'>WishList</h1>
         <p className='text-muted-foreground mt-1 mb-3 ms-7'>{wishlistdata?.count} items in your cart</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 ">
       {wishlistdata?.data.map((product)=> <div  key={product._id} >

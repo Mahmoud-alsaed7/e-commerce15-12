@@ -22,7 +22,7 @@ export default async function brandsDetails({params}:{params:Params}) {
    return (
     <>
       <div className="container mx-auto px-3 py-6">
-        <h2 className="text-2xl font-bold mb-2">{brands[0]?.brand.name}</h2>
+        <h2 className="text-2xl font-bold mb-2  mt-15">{brands[0]?.brand.name}</h2>
         <p className="text-gray-600 mb-5">Products from this brand</p>
         {brands.length > 0 ?
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 ">
