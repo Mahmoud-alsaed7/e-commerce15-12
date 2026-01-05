@@ -23,9 +23,9 @@ export default async function profiledetails({params}:{params:Params}) {
     <>
      <div className="container mx-auto py-10">
          <div className="container mx-auto px-10 ">
-      <h1 className='text-3xl font-bold tracking-tight mb-5'>Specific Address</h1>
+      <h1 className='text-3xl font-bold tracking-tight mb-5 mt-10 p-5git status'>Specific Address</h1>
        <div className="flex flex-col gap-3">
-         <Card  className="w-4xl mx-auto">
+         <Card  className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-4xl mx-auto">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Shipping Address</CardTitle>
           </CardHeader>
